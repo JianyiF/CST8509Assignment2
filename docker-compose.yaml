@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  ros2_redball:
+    build:
+      context: .
+      args:
+        ROS_DISTRO: humble
+
+    container_name: ros2_redball_container
+
+    network_mode: host
+
+    privileged: true
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - IGNITION_VERSION=fortress
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./:/ros2_ws/src   # Optional live editing
+
+    stdin_open: true
+    tty: true
+
+    command: /bin/bash

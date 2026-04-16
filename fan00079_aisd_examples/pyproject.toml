@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aisd_examples"
+version = "0.0.1"
+description = "AISD Create3 RL environments"
+dependencies = [
+    "numpy<2",
+    "gymnasium"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["aisd_examples"]
